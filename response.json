@@ -1,0 +1,35 @@
+{
+    "success": true,
+    "description": "Response berisi teks yang dapat dikustomisasi untuk halaman ucapan ulang tahun.",
+    "data": {
+      "recipient_name": "Haerin",
+      "greeting_text": "Selamat ulang tahun cintaku! Semoga hari ini penuh kebahagiaan dan cinta. 💖🎉",
+      "main_message": "Aku bersyukur setiap hari bisa bersamamu. Kamu adalah anugerah terindah dalam hidupku. 😘",
+      "chatbox_message": "Aku cinta kamu lebih dari kata-kata bisa ungkapkan. 💕",
+      "ideas": [
+        "Hari ini spesial karena...",
+        "Kamu lahir ke dunia! 🥰🥰",
+        "Aku ingin membuat hari ini tak terlupakan dan penuh cinta. ❤️",
+        "Karena...",
+        "Kamu yang terbaik di hidupku! 😍"
+      ],
+      "wish": {
+        "title": "Selamat Ulang Tahun!",
+        "text": "Aku harap semua impianmu jadi kenyataan. Aku akan selalu ada di sisimu, sekarang dan selamanya. "
+      },
+      "replay_message": "Klik di sini kalau mau lihat lagi kejutan ini! 🎉",
+      "last_smile": ":)",
+      "image_path": "img/vector.jpg",
+      "nine_message": "Terima kasih telah menjadi bagian dari hidupku. Aku mencintaimu lebih dari yang bisa aku ungkapkan. 💖",
+      "assets": {
+        "balloons": [
+          "img/balloon.svg",
+          "img/heart.svg",
+          "img/smiling.svg"
+        ],
+        "music_notes": [
+          "img/music-note.svg"
+        ]
+      }
+    }
+  }
