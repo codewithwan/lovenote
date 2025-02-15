@@ -309,6 +309,6 @@ fetch('response.json')
     document.getElementById('imagePath').src = data.data.image_path;
     document.querySelector('.nine p').textContent = data.data.nine_message; 
   })
-  .catch(error => console.error('Error fetching data:', error));
+  .catch(error => console.error('Error fetching data:', error));  
 
 animationTimeline();

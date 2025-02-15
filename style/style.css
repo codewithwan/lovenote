@@ -120,8 +120,10 @@ body {
 
 .six img {
   display: inline-block;
-  max-width: 45%;
+  max-width: 100%;
   height: auto;
+  /* Ensure the image maintains its aspect ratio */
+  object-fit: contain;
 }
 
 .six .hat {
