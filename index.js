@@ -1,14 +1,23 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
 import { nanoid } from "nanoid";
+import rateLimit from "express-rate-limit";
 
 const app = express();
 const prisma = new PrismaClient();
 const PORT = process.env.PORT || 3000;
 
+// Rate limiting middleware
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, 
+  max: 100,
+  message: "Too many requests from this IP, please try again later."
+});
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(limiter); 
 
 function validateRequestBody(req, res, next) {
   const {
@@ -96,26 +105,7 @@ app.post("/create", validateRequestBody, async (req, res) => {
       },
     });
 
-    res.json({
-      success: true,
-      message: "Pesan berhasil dibuat!",
-      slug: newMessage.slug,
-      data: {
-        recipient_name: newMessage.recipient,
-        greeting_text: newMessage.greeting,
-        main_message: newMessage.mainMessage,
-        chatbox_message: newMessage.chatMessage,
-        ideas: newMessage.ideas,
-        wish: {
-          title: newMessage.wishTitle,
-          text: newMessage.wishText,
-        },
-        replay_message: newMessage.replayMessage,
-        last_smile: newMessage.lastSmile,
-        image_path: newMessage.imagePath,
-        nine_message: newMessage.nineMessage,
-      },
-    });
+    res.redirect(`/view/${newMessage.slug}`);
   } catch (error) {
     console.error(error);
     res.status(500).send("Terjadi kesalahan!");
@@ -127,7 +117,7 @@ app.get("/view/:slug", async (req, res) => {
   const message = await prisma.message.findUnique({ where: { slug } });
 
   if (!message) return res.status(404).send("Pesan tidak ditemukan!");
-  console.log(message);
+  // console.log(message);
 
   res.render("view", { message });
 });
