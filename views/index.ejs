@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoveNote</title>
+    <link rel="stylesheet" href="/style/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>✨ Buat Pesan Spesial</h1>
+      <form id="birthdayForm" action="/create" method="POST">
+        <div class="form-sections">
+          <!-- Bagian 1: Informasi Utama -->
+          <div class="form-section">
+            <h2>Informasi Utama</h2>
+            <div class="input-group">
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="recipient"
+                  placeholder="Contoh: Haerin"
+                  maxlength="20"
+                  required
+                />
+                <span class="char-counter">0/20</span>
+              </div>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="greeting"
+                  placeholder="Contoh: Selamat ulang tahun cintaku! 💖🎉"
+                  maxlength="100"
+                  required
+                />
+                <span class="char-counter">0/100</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bagian 2: Pesan -->
+          <div class="form-section">
+            <h2>Pesan-Pesan</h2>
+            <div class="input-wrapper">
+              <textarea
+                name="mainMessage"
+                placeholder="Contoh: Aku bersyukur setiap hari bisa bersamamu. Kamu adalah anugerah terindah dalam hidupku. 😘"
+                rows="4"
+                maxlength="200"
+              ></textarea>
+              <span class="char-counter">0/200</span>
+            </div>
+            <div class="input-wrapper">
+              <textarea
+                name="chatMessage"
+                placeholder="Contoh: Aku cinta kamu lebih dari kata-kata bisa ungkapkan. 💕"
+                rows="3"
+                maxlength="100"
+              ></textarea>
+              <span class="char-counter">0/100</span>
+            </div>
+          </div>
+
+          <!-- Bagian 3: Ide-Ide -->
+          <div class="form-section">
+            <h2>Ide-Ide Spesial</h2>
+            <div class="ideas-container">
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="ideasOne"
+                  placeholder="Contoh: Hari ini spesial karena..."
+                  maxlength="50"
+                />
+                <span class="char-counter">0/50</span>
+              </div>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="ideasTwo"
+                  placeholder="Contoh: Kamu lahir ke dunia! 🥰🥰"
+                  maxlength="50"
+                />
+                <span class="char-counter">0/50</span>
+              </div>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="ideasThree"
+                  placeholder="Contoh: Aku ingin membuat hari ini tak terlupakan dan penuh"
+                  maxlength="70"
+                />
+                <span class="char-counter">0/50</span>
+              </div>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="ideasFour"
+                  placeholder="Contoh: CINTA ❤️"
+                  maxlength="50"
+                />
+                <span class="char-counter">0/50</span>
+              </div>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="ideasFive"
+                  placeholder="Contoh: Karena..."
+                  maxlength="50"
+                />
+                <span class="char-counter">0/50</span>
+              </div>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="ideasSix"
+                  placeholder="Contoh: Kamu yang terbaik di hidupku! 😍"
+                  maxlength="50"
+                />
+                <span class="char-counter">0/50</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bagian 4: Harapan -->
+          <div class="form-section">
+            <h2>Harapan</h2>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                name="wishTitle"
+                placeholder="Contoh: Selamat Ulang Tahun!"
+                maxlength="50"
+              />
+              <span class="char-counter">0/50</span>
+            </div>
+            <div class="input-wrapper">
+              <textarea
+                name="wishText"
+                placeholder="Contoh: Aku harap semua impianmu jadi kenyataan. Aku akan selalu ada di sisimu, sekarang dan selamanya."
+                rows="3"
+                maxlength="150"
+              ></textarea>
+              <span class="char-counter">0/150</span>
+            </div>
+          </div>
+
+          <!-- Bagian 5: Pesan Tambahan -->
+          <div class="form-section">
+            <h2>Pesan Tambahan</h2>
+            <div class="input-wrapper">
+              <textarea
+                name="replayMessage"
+                placeholder="Contoh: Klik di sini kalau mau lihat lagi kejutan ini! 🎉"
+                rows="2"
+                maxlength="100"
+              ></textarea>
+              <span class="char-counter">0/100</span>
+            </div>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                name="lastSmile"
+                placeholder="Contoh: :)"
+                maxlength="10"
+              />
+              <span class="char-counter">0/10</span>
+            </div>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                name="imagePath"
+                placeholder="Contoh: https://example.com/image.jpg"
+                maxlength="200"
+              />
+              <span class="char-counter">0/200</span>
+            </div>
+            <div class="input-wrapper">
+              <textarea
+                name="nineMessage"
+                placeholder="Contoh: Terima kasih telah menjadi bagian dari hidupku. Aku mencintaimu lebih dari yang bisa aku ungkapkan. 💖"
+                rows="3"
+                maxlength="200"
+              ></textarea>
+              <span class="char-counter">0/200</span>
+            </div>
+          </div>
+
+          <!-- Bagian 6: URL Kustom -->
+          <div class="form-section">
+            <h2>Pengaturan URL</h2>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                name="customSlug"
+                placeholder="Contoh: haerin-birthday"
+                class="slug-input"
+                maxlength="30"
+              />
+              <span class="char-counter">0/30</span>
+              <small>Biarkan kosong untuk URL otomatis</small>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit">
+          <span>Buat Pesan Spesial</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M22 2L11 13" />
+            <path d="M22 2L15 22L11 13L2 9L22 2z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("birthdayForm")
+        .addEventListener("submit", function (event) {
+          document.querySelectorAll("input, textarea").forEach((element) => {
+            const wrapper = element.parentElement;
+            const counter = wrapper.querySelector(".char-counter");
+
+            element.addEventListener("input", function () {
+              const maxLength = this.getAttribute("maxlength");
+              const currentLength = this.value.length;
+              counter.textContent = `${currentLength}/${maxLength}`;
+
+              if (currentLength >= maxLength) {
+                counter.classList.add("max-reached");
+              } else {
+                counter.classList.remove("max-reached");
+              }
+            });
+          });
+        });
+    </script>
+  </body>
+</html>

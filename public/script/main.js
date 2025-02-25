@@ -64,7 +64,7 @@ const animationTimeline = () => {
     })
     .to(
       ".three",
- 0.7,
+      0.7,
       {
         opacity: 0,
         y: 10,
@@ -288,27 +288,5 @@ const typeEffect = (element, speed) => {
     }
   }, speed);
 };
-
-fetch('response.json')
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById('name').textContent = data.data.recipient_name;
-    document.getElementById('greetingText').textContent = data.data.greeting_text;
-    document.querySelector('.three p').textContent = data.data.main_message;
-    const chatbox = document.querySelector('.hbd-chatbox');
-    chatbox.textContent = data.data.chatbox_message;
-    typeEffect(chatbox, 100); // Add typing effect to chatbox message
-    document.querySelector('.idea-1').textContent = data.data.ideas[0];
-    document.querySelector('.idea-2').textContent = data.data.ideas[1];
-    document.querySelector('.idea-3').textContent = data.data.ideas[2];
-    document.querySelector('.idea-4').textContent = data.data.ideas[3];
-    document.querySelector('.idea-5').textContent = data.data.ideas[4];
-    document.getElementById('wishText').textContent = data.data.wish.text;
-    document.getElementById('replay').textContent = data.data.replay_message;
-    document.querySelector('.last-smile').textContent = data.data.last_smile;
-    document.getElementById('imagePath').src = data.data.image_path;
-    document.querySelector('.nine p').textContent = data.data.nine_message; 
-  })
-  .catch(error => console.error('Error fetching data:', error));  
 
 animationTimeline();
