@@ -2,10 +2,25 @@ import express from "express";
 import { PrismaClient } from "@prisma/client";
 import { nanoid } from "nanoid";
 import rateLimit from "express-rate-limit";
+import winston from "winston";
 
 const app = express();
 const prisma = new PrismaClient();
 const PORT = process.env.PORT || 3000;
+
+// Configure Winston logger
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' })
+  ]
+});
 
 // Rate limiting middleware
 const limiter = rateLimit({
@@ -45,6 +60,7 @@ function validateRequestBody(req, res, next) {
     !imagePath ||
     !nineMessage
   ) {
+    logger.warn('Validation failed: Missing fields in request body');
     return res.status(400).json({ error: "All fields are required!" });
   }
 
@@ -105,9 +121,10 @@ app.post("/create", validateRequestBody, async (req, res) => {
       },
     });
 
+    logger.info(`Message created with slug: ${newMessage.slug}`);
     res.redirect(`/view/${newMessage.slug}`);
   } catch (error) {
-    console.error(error);
+    logger.error(`Error creating message: ${error.message}`);
     res.status(500).send("Terjadi kesalahan!");
   }
 });
@@ -116,12 +133,14 @@ app.get("/view/:slug", async (req, res) => {
   const { slug } = req.params;
   const message = await prisma.message.findUnique({ where: { slug } });
 
-  if (!message) return res.status(404).send("Pesan tidak ditemukan!");
-  // console.log(message);
+  if (!message) {
+    logger.warn(`Message not found for slug: ${slug}`);
+    return res.redirect("/");
+  }
 
   res.render("view", { message });
 });
 
-app.listen(PORT, () =>
-  console.log(`Server running at http://localhost:${PORT}`)
-);
+app.listen(PORT, () => {
+  logger.info(`Server running at http://localhost:${PORT}`);
+});
