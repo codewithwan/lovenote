@@ -3,6 +3,11 @@ import { PrismaClient } from "@prisma/client";
 import { nanoid } from "nanoid";
 import rateLimit from "express-rate-limit";
 import winston from "winston";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const prisma = new PrismaClient();
@@ -31,6 +36,7 @@ const limiter = rateLimit({
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(express.static("public/ctf"));
 app.use(express.urlencoded({ extended: true }));
 app.use(limiter); 
 
@@ -69,6 +75,10 @@ function validateRequestBody(req, res, next) {
 
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/ctf", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "ctf", "chall.zip"));
 });
 
 app.post("/create", validateRequestBody, async (req, res) => {
